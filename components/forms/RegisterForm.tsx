@@ -12,6 +12,11 @@ import { UserFormValidation } from "@/lib/validation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from './PatientForm'
+import { FormControl } from "@/components/ui/form"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { GenderOptions } from "@/constants"
+import { Label } from "@radix-ui/react-label"
+
 
 
 const RegisterForm = ({ user }: { user: User }) => {
@@ -67,6 +72,74 @@ const RegisterForm = ({ user }: { user: User }) => {
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"
          />
+
+         <div className="flex flex-col gap-6 xl:flex-row">
+            <CustomFormField
+                fieldType={FormFieldType.INPUT}
+                control={form.control}
+                name="email"
+                label="Email"
+                placeholder="johndoe@gmail.com"
+                iconSrc="/assets/icons/email.svg"
+                iconAlt="email"
+            />
+
+            <CustomFormField
+                fieldType={FormFieldType.PHONE_INPUT}
+                control={form.control}
+                name="phone"
+                label="Phone Number"
+                placeholder="(555) 123-4567"
+            />
+         </div>
+
+         <div className="flex flex-col gap-6 xl:flex-row">
+         <CustomFormField
+                fieldType={FormFieldType.DATE_PICKER}
+                control={form.control}
+                name="birthdate"
+                label="Date of Birth"
+               
+            />
+
+            <CustomFormField
+                fieldType={FormFieldType.SKELETON}
+                control={form.control}
+                name="gender"
+                label="Gender"
+                renderSkeleton={(field) => (
+                    <FormControl>
+                        <RadioGroup className="flex h-11 gap-6 xl:justify-between"onValueChange={field.onChange} defaultValue={field.value}>
+                            {GenderOptions.map((option) => (
+                                <div key={option} className="radio-group">
+                                    <RadioGroupItem value={option} id={option} />
+                                    <Label htmlFor={option} className="cursor-pointer">
+                                        {option}
+                                    </Label>
+                                </div>
+                            ))}
+                                
+                        </RadioGroup>
+                    </FormControl>
+                )}
+            />
+         </div>
+
+         <div className="flex flex-col gap-6 xl:flex-row">
+
+         </div>
+
+         <div className="flex flex-col gap-6 xl:flex-row">
+
+         </div>
+
+         <div className="flex flex-col gap-6 xl:flex-row">
+
+         </div>
+
+         <div className="flex flex-col gap-6 xl:flex-row">
+
+         </div>
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
       </form>

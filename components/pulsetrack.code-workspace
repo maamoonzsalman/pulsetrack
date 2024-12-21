@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "pulsetrack",
+			"path": ".."
+		},
+		{
+			"name": "public",
+			"path": "../../../public"
+		}
+	],
+	"settings": {}
+}

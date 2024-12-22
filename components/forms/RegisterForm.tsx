@@ -16,7 +16,9 @@ import { FormControl } from "@/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { GenderOptions } from "@/constants"
 import { Label } from "@radix-ui/react-label"
-
+import { Doctors } from "@/constants"
+import Image from "next/image"
+import { SelectItem } from "@/components/ui/select"
 
 
 const RegisterForm = ({ user }: { user: User }) => {
@@ -123,15 +125,77 @@ const RegisterForm = ({ user }: { user: User }) => {
                     </FormControl>
                 )}
             />
-         </div>
+        </div>
+      
 
-         <div className="flex flex-col gap-6 xl:flex-row">
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+                fieldType={FormFieldType.INPUT}
+                control={form.control}
+                name="address"
+                label="Address"
+                placeholder="14 Street, New York"
+               
+            />
 
-         </div>
+          <CustomFormField
+                fieldType={FormFieldType.INPUT}
+                control={form.control}
+                name="occupation"
+                label="Occupation"
+                placeholder="Software Engineer"
+          />
+        </div>
 
-         <div className="flex flex-col gap-6 xl:flex-row">
+        <div className="flex flex-col gap-6 xl:flex-row">
+            <CustomFormField
+                fieldType={FormFieldType.INPUT}
+                control={form.control}
+                name="emergencyContactName"
+                label="Emergency contact name"
+                placeholder="Guardian's name"
+            />
 
-         </div>
+            <CustomFormField
+                fieldType={FormFieldType.PHONE_INPUT}
+                control={form.control}
+                name="emergencyContactNumber"
+                label="Emergency contact number"
+                placeholder="(555) 123-4567"
+            />
+        </div>
+
+        <section className="space-y-6">
+          <div className="mb-9 space-y-1">
+                <h2 className="sub-header">Medical Information</h2>
+          </div>
+        </section>
+
+        <CustomFormField
+            fieldType={FormFieldType.SELECT}
+            control={form.control}
+            name="primaryPhysician"
+            label="Primary Physician"
+            placeholder="Select a physician"
+        >
+          {Doctors.map((doctor) => (
+            <SelectItem key={doctor.name} value={doctor.name}>
+              {doctor.name}
+              <div className="flex cursor-pointer items-center gap-2">
+                <Image 
+                  src={doctor.image} 
+                  alt={doctor.name} 
+                  width={32} 
+                  height={32} 
+                  className="rounded-full border border-dark-500"
+                />
+              </div>
+              <p>{doctor.name}</p>
+            </SelectItem>
+          ))}
+
+
+        </CustomFormField>
 
          <div className="flex flex-col gap-6 xl:flex-row">
 

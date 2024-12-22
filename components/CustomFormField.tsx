@@ -121,6 +121,14 @@ const RenderField = ({ field, props}: {field: any; props: CustomProps}) => {
       )
     case FormFieldType.SKELETON:
       return renderSkeleton ? renderSkeleton (field) : null
+    case FormFieldType.CHECKBOX:
+      return (
+        <FormControl>
+          <div className="flex items-center gap-4">
+
+          </div>
+        </FormControl>
+      )
       
     default:
       break;

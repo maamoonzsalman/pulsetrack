@@ -16,9 +16,8 @@ import { Doctors, GenderOptions, IdentificationTypes, PatientFormDefaultValues }
 import { Label } from "@radix-ui/react-label"
 import Image from "next/image"
 import { SelectItem } from "@/components/ui/select"
-import FileUploader from "../FileUploader"
 import { registerPatient } from "@/lib/actions/patient.actions"
-
+import FileUploader from "@/components/FileUploader"
 
 const RegisterForm = ({ user }: { user: User }) => {
 
@@ -40,7 +39,6 @@ const RegisterForm = ({ user }: { user: User }) => {
     setIsLoading(true);
 
     let formData;
-    console.log('yoyoyo')
     if (values.identificationDocument && values.identificationDocument.length > 0) {
       const blobFile = new Blob([values.identificationDocument[0]], {
         type: values.identificationDocument[0].type,
@@ -58,11 +56,9 @@ const RegisterForm = ({ user }: { user: User }) => {
         birthDate: new Date(values.birthDate),
         identificationDocument: formData,
       }
-      console.log('patientData: ', patientData)
 
       // @ts-ignore
       const patient = await registerPatient(patientData);
-      console.log('patient', patient)
       if(patient) router.push(`/patients/${user.$id}/new-appointment`)
     } catch (error) {
       console.log(error);

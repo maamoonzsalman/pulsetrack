@@ -57,6 +57,11 @@ const RenderField = ({ field, props}: {field: any; props: CustomProps}) => {
           </FormControl>
         </div>
       )
+    case FormFieldType.TEXTAREA:
+      return (
+        <FormControl>
+        </FormControl>
+      )
     case FormFieldType.PHONE_INPUT:
       return (
         <FormControl>
@@ -95,9 +100,14 @@ const RenderField = ({ field, props}: {field: any; props: CustomProps}) => {
       return (
         <FormControl>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
-            <FormControl className="shad-select-trigger">
-              <SelectValue placeholder={placeholder} />
+            <FormControl>
+              <SelectTrigger className="shad-select-trigger">
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
             </FormControl>
+            <SelectContent className="shad-select-content">
+              {props.children}
+            </SelectContent>
           </Select>
         </FormControl>
       )

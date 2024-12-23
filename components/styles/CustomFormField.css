@@ -1,0 +1,16 @@
+.input-phone {
+    display: flex;
+}
+
+.PhoneInputCountry { 
+    margin-top: 5px;
+}
+
+.PhoneInputCountryIconImg, .PhoneInputCountryIcon--border {
+    height: 12px;
+    width: auto;
+}
+
+.PhoneInputCountrySelect {
+    background-color: transparent;
+}

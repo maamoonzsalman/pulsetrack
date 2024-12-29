@@ -1,5 +1,5 @@
 # Healthcare Management Application - PulseTrack
-Healthcare Management App is a streamlined application designed to manage patient records, schedule appointments, and provide real-time updates for healthcare operations. Built with modern technologies, this app ensures secure and efficient handling of critical healthcare workflows.
+PulseTrack is a streamlined application designed to manage patient records, schedule appointments, and provide real-time updates for healthcare operations. Built with modern technologies, this app ensures secure and efficient handling of critical healthcare workflows.
 
 ## Tech Stack
 • Frontend Framework: Next.js (v14.2.16), React (v18)  
